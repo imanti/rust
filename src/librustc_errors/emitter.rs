@@ -340,7 +340,8 @@ impl EmitterWriter {
 
         // Sort the annotations by (start, end col)
         let mut annotations = line.annotations.clone();
-        annotations.sort();
+        annotations.reverse();
+        annotations.sort_by_key(|k| k.start_col);
         annotations.reverse();
 
         // First, figure out where each label will be positioned.
